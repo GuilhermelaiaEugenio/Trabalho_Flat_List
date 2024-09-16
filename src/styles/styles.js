@@ -26,4 +26,17 @@ export const styles = StyleSheet.create({
     itemText: {
       color: '#FFF',
     },
+    inputContainer: {
+      marginTop: 20,
+      width: '80%', 
+    },
+    input:{
+      height: 40, 
+      borderColor: '#ddd',
+      borderWidth: 1,
+      borderRadius: 5,
+      paddingHorizontal: 10,
+      paddingVertical: 8, 
+      color: '#FFF', 
+    }
   });

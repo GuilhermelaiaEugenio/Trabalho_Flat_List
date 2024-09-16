@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, Button, FlatList } from 'react-native';
-import { api } from './src/services/api';
-import { styles } from './src/styles/styles';
+import { View, Text, Button, FlatList, TextInput, StyleSheet } from 'react-native';
+import { api } from './src/services/api'; 
+import { styles } from './src/styles/styles'; 
 
 function App() {
   const [dados, setDados] = useState([]);
+  const [inputValue, setInputValue] = useState(''); 
 
   async function searchDados() {
-    const response = await api.get('');
+    const response = await api.get(`${inputValue}` + '/repos');
     console.log(response);
     setDados(response.data);
   }
@@ -16,6 +17,16 @@ function App() {
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
         <Button title="Consultar" onPress={searchDados} />
+      </View>
+
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          value={inputValue}
+          onChangeText={setInputValue}
+          placeholder="Digite algo..."
+          placeholderTextColor= "#fff"
+        />
       </View>
 
       <FlatList
@@ -36,3 +47,4 @@ function App() {
 }
 
 export default App;
+
